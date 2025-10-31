@@ -3,9 +3,9 @@ name: Pipeline de Integración Continua (CI)
 # Define el disparador (Trigger)
 on:
   push:
-    branches: [ "main" ] # Se ejecuta con cada push a la rama main
+    branches: [ "main" ] 
   pull_request:
-    branches: [ "main" ] # Se ejecuta con cada Pull Request a main
+    branches: [ "main" ] 
 
 # Define el trabajo (Job)
 jobs:
@@ -23,10 +23,10 @@ jobs:
       with:
         node-version: '18'
     
-    # 3. Instalar dependencias (Si hay un package.json)
+    # 3. Instalar dependencias 
     - name: Instalar Dependencias (npm)
       run: npm install
 
-    # 4. Ejecutar las Pruebas Unitarias (Validación clave)
+    # 4. Ejecutar las Pruebas Unitarias (Usando npm test)
     - name: Ejecutar Pruebas Unitarias
-      run: npx jest
+      run: npm test
