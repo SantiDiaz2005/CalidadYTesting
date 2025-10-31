@@ -1,0 +1,32 @@
+name: Pipeline de Integración Continua (CI)
+
+# Define el disparador (Trigger)
+on:
+  push:
+    branches: [ "main" ] # Se ejecuta con cada push a la rama main
+  pull_request:
+    branches: [ "main" ] # Se ejecuta con cada Pull Request a main
+
+# Define el trabajo (Job)
+jobs:
+  build-and-test:
+    name: Compilación y Pruebas
+    runs-on: ubuntu-latest # El entorno virtual para el CI Server
+
+    steps:
+    # 1. Obtener el código fuente
+    - uses: actions/checkout@v4
+
+    # 2. Configurar el entorno (Node.js)
+    - name: Configurar Node.js (v18)
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    # 3. Instalar dependencias (Si hay un package.json)
+    - name: Instalar Dependencias (npm)
+      run: npm install
+
+    # 4. Ejecutar las Pruebas Unitarias (Validación clave)
+    - name: Ejecutar Pruebas Unitarias
+      run: npx jest
