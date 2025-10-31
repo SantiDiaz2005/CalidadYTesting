@@ -1,7 +1,5 @@
 // index.test.js
 const sumar = require('./index');
-
-test('PRUEBA EXITOSA: la funcion sumar debe retornar la suma correcta', () => {
-  // 1 + 2 = 3. Esto es correcto y debería pasar.
-  expect(sumar(1, 2)).toBe(3); 
+test('DEMO FALLO CI: Se espera 10 pero se obtiene 3', () => {
+  expect(sumar(1, 2)).toBe(10); // Esto forzará la falla
 });
